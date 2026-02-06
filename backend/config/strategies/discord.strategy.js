@@ -1,5 +1,5 @@
 const passport = require("passport");
-const DiscordStrategy = require("passport-discord").Strategy; // ← corrige ici
+const DiscordStrategy = require("passport-discord").Strategy;
 const { oauthCallback } = require("./oauth.helper");
 const jwt = require("jsonwebtoken");
 
@@ -12,7 +12,7 @@ passport.use(new DiscordStrategy({
     scope: ["identify", "email"]
 }, async (req,accessToken, refreshToken, profile, done) => {
     try {
-        const db = req.db; // récupère la DB injectée depuis la route
+        const db = req.db;
 
         const user = await oauthCallback({
             db,
